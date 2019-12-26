@@ -15,19 +15,15 @@ login(model: any) {
   .pipe(
     map((response: any) => {
       const tokenResponse = response;
-      if (tokenResponse) {
-        if (tokenResponse.isSucceeded) {
-          if (tokenResponse.isSucceeded === true){
-            localStorage.setItem('token', tokenResponse.data);
-          }
-          return tokenResponse.isSucceeded;
-        }
+      if (tokenResponse.isSucceeded && tokenResponse.isSucceeded === true) {
+        localStorage.setItem('token', tokenResponse.data);
       }
-      return false;
+      return tokenResponse;
     })
   );
 }
-register(model: any){
+
+register(model: any) {
   return this.http.post(this.baseUrl + 'register', model);
 }
 

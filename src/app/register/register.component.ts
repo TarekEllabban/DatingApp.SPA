@@ -18,15 +18,11 @@ export class RegisterComponent implements OnInit {
 
   register() {
     this.authService.register(this.model).subscribe( (next: any) => {
-      if (next) {
         if (next.isSucceeded && next.isSucceeded === true) {
           console.log('Succeeded');
         } else {
           console.log(next.message);
         }
-      } else {
-        console.log(next.message);
-      }
     }
     , (error: any) => {
       console.log(error);
