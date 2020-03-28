@@ -10,7 +10,7 @@ export class ErrorInterceptor implements HttpInterceptor {
             catchError( error => {
                 if (error instanceof HttpErrorResponse) {
                     if (error.status === 401) {
-                        throwError('UnAuthorized');
+                        return throwError('UnAuthorized');
                     }
                     const applicationError = error.headers.get('Application-Error');
                     if (applicationError) {
