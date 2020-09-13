@@ -17,4 +17,12 @@ getUser(id: number): Observable<User> {
   return this.http.get<User>(environment.apiUrl + 'users/' + id);
 }
 
+getUserByUserName(username: string): Observable<User> {
+  return this.http.get<User>(environment.apiUrl + 'users/username/' + username);
+}
+
+updateUser(username: string, user: User): Observable<boolean> {
+  return this.http.put<boolean>((environment.apiUrl + 'users/' + username), user);
+}
+
 }
